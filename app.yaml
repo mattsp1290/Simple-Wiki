@@ -1,0 +1,31 @@
+application: mattsp1290-base
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+libraries:
+- name: jinja2
+  version: latest
+- name: PIL
+  version: latest
+
+handlers:
+- url: /assets
+  static_dir: assets
+  
+  
+- url: /assets/css
+  static_dir: assets/css
+  
+- url: /assets/js
+  static_dir: assets/js
+  
+- url: /assets/images
+  static_dir: assets/images
+  
+- url: /assets/fonts
+  static_dir: assets/fonts
+  
+- url: /.*
+  script: routes.app

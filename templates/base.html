@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Base</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1>My Site</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-8">
+				<div class="btn-group">
+				  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+					Navigation <span class="caret"></span>
+				  </button>
+				  <ul class="dropdown-menu" role="menu">
+					<li><a href="/">Home</a></li>
+					<li class="divider"></li>
+					{% if username: %}
+						<li><a href="/logout">Log out</a></li>
+					{% else %}
+						<li><a href="/login">Log In</a></li>
+						<li><a href="/signup">Sign Up</a></li>
+					{% endif %}
+
+				  </ul>
+				</div>
+			</div>
+			<div class="col-md-4">
+				{% if username: %}
+					 <p>Signed in as: {{username}}</p>
+					<p><a href="/logout">Log out</a></p>
+				{% else %}
+					<a href="/login">Log in</a> or <a href="/signup">Sign up</a>
+				{% endif %}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				{% block content %}
+				{% endblock %}
+			</div>
+		</div>
+	</div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="//code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../assets/js/bootstrap.min.js"></script>
+  </body>
+</html>

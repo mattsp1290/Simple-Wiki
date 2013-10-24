@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if login_error: %}
+	<div class="alert alert-danger alert-dismissable">
+	  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	  <strong>ERROR:</strong> Your username and password do not match any users in our system.
+	</div>
+{% endif %}
+
+
+
+<form role="form" method="post">
+<div class="form-group">
+<label for="username">
+	Username
+</label>
+<input name="username" class="form-control" id="username" type="input" value="{{username}}">
+</div>
+<div class="form-group">
+<label for="password">
+	Password
+</label>
+<input name="password" class="form-control" id="password" type="password" value="">
+</div>
+<input type="submit" class="btn btn-default">
+</form>
+	
+	
+{% endblock %}

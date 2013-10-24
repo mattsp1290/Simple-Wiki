@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if username_error: %}
+	<div class="alert alert-danger alert-dismissable">
+	  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	  <strong>ERROR:</strong> {{username_error}}
+	</div>
+{% endif %}
+
+{% if email_error: %}
+	<div class="alert alert-danger alert-dismissable">
+	  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	  <strong>ERROR:</strong> {{email_error}}
+	</div>
+{% endif %}
+
+{% if password_error: %}
+	<div class="alert alert-danger alert-dismissable">
+	  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	  <strong>ERROR:</strong> {{password_error}}
+	</div>
+{% endif %}
+
+{% if verify_error: %}
+	<div class="alert alert-danger alert-dismissable">
+	  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	  <strong>ERROR:</strong> {{verify_error}}
+	</div>
+{% endif %}
+
+
+
+<form role="form" method="post">
+<div class="form-group">
+<label for="username">
+	Username
+</label>
+<input name="username" class="form-control" id="username" type="input" value="{{username}}">
+</div>
+<div class="form-group">
+<label for="password">
+	Password
+</label>
+<input name="password" class="form-control" id="password" type="password" value="">
+</div>
+<div class="form-group">
+<label for="verify">
+	Verify Password
+</label>
+<input name="verify" class="form-control" id="verify" type="password" value="">
+</div>
+<div class="form-group">
+<label for="email">
+	Email (optional)
+</label>
+<input name="email" class="form-control" id="email" type="input" value="{{email}}">
+</div>
+<input type="submit" class="btn btn-default">
+</form>
+
+{% endblock %}

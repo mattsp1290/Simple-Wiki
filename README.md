@@ -1,0 +1,1 @@
+This is a simple wiki style web app for use with the Google AppEngine. This was written using Python using the webapp2 library.
