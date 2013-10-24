@@ -48,6 +48,12 @@ class AppHandler(webapp2.RequestHandler):
 	
     def logout(self):
         self.response.headers.add_header("Set-Cookie", str("user_id=""; Path=/"))
+		
+	def get_username(self):
+		if isinstance(self.user, User):
+			return self.user.username
+		else:
+			return None
         
     def initialize(self, *a, **kw):
 		webapp2.RequestHandler.initialize(self, *a, **kw)
