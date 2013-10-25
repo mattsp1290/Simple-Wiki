@@ -30,14 +30,14 @@ class AppHandler(webapp2.RequestHandler):
         """Write an arbitrary string to the response stream."""
         self.response.out.write(string)
 
-    def render_str(self, template_name, values=None, **kwargs):
+    def render_str(self, template_name):
         """Render a jinja2 template and return it as a string."""
         template = self.jinja.get_template(template_name)
-        return template.render(values or kwargs)
+        return template.render(self.values)
 
-    def render(self, template_name, values=None, **kwargs):
+    def render(self, template_name):
         """Render a jinja2 template using a dictionary or keyword arguments."""
-        self.write(self.render_str(template_name, values or kwargs))
+        self.write(self.render_str(template_name))
 
     def redirect_to(self, name, *args, **kwargs):
         """Redirect to a URI that corresponds to a route name."""
@@ -58,5 +58,7 @@ class AppHandler(webapp2.RequestHandler):
     def initialize(self, *a, **kw):
 		webapp2.RequestHandler.initialize(self, *a, **kw)
 		user_id = self.read_secure_cookie('user_id')
+		self.values = {}
 		self.user = user_id and User.by_id(int(user_id))
-		
+		if isinstance(self.user, User):
+			self.values['username'] = self.user.username

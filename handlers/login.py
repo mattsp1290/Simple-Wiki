@@ -3,9 +3,8 @@ from models.user import User
 
 class LoginHandler(AppHandler):
 	def render_form(self, login_error=False):
-		values = dict()
-		values['login_error'] = login_error
-		self.render("login.html", values)
+		self.values['login_error'] = login_error
+		self.render("login.html")
 	
 	def get(self):
 		self.render_form()

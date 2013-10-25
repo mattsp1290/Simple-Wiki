@@ -3,7 +3,4 @@ from models.user import User
 
 class HomeHandler(AppHandler):
     def get(self):
-		values = {}
-		if self.user:
-			values['username'] = self.user.username
-		self.render('home.html', values)
+		self.render('home.html')

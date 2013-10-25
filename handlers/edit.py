@@ -19,14 +19,12 @@ class EditHandler(AppHandler):
 			self.render_form(page_name, content)
 			
 	def render_form(self, page_name, content = ""):
-		values = {}
 		id = self.request.get('id')
 		if id:
 			wiki = Wiki.by_id(int(id))
 		else:
 			wiki = Wiki.by_name(page_name)
 		if wiki:
-			values['username'] = self.user.username
-			values['page_name'] = page_name
-			values['content'] = wiki.content
-		self.render('edit.html', values)
+			self.values['page_name'] = page_name
+			self.values['content'] = wiki.content
+		self.render('edit.html')
