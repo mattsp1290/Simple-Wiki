@@ -5,9 +5,7 @@ from models.wiki import Wiki
 class EditHandler(AppHandler):
 	def get(self, page_name):
 		if isinstance(self.user, User):
-			values = {}
-			values['username'] = self.user.username
-			self.render_form(page_name, values)
+			self.render_form(page_name)
 		else:
 			self.redirect("/login")
 			
@@ -22,7 +20,13 @@ class EditHandler(AppHandler):
 			
 	def render_form(self, page_name, content = ""):
 		values = {}
-		wiki = Wiki.by_name(page_name)
+		id = self.request.get('id')
+		if id:
+			wiki = Wiki.by_id(int(id))
+		else:
+			wiki = Wiki.by_name(page_name)
 		if wiki:
+			values['username'] = self.user.username
+			values['page_name'] = page_name
 			values['content'] = wiki.content
 		self.render('edit.html', values)

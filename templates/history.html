@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+	<h2>History of {{page_name}}</h2>
+	<table class="table table-striped">
+		<tr>
+			<th>Created</th>
+			<th>Content</th>
+			<th></th>
+		</tr>
+	{% for wiki in wikis %}
+		<tr>
+			<td>{{wiki.created}}</td>
+			<td>{{wiki.content}}</td>
+			<td><a href="{{page_name}}?id={{wiki.id}}">view</a> | <a href="/_edit{{page_name}}?id={{wiki.id}}">edit</a></td>
+		</tr>
+	{% endfor %}
+	</table>
+	<a href="{{page_name}}">view</a> | <a href="/_edit{{page_name}}">edit</a>
+{% endblock %}

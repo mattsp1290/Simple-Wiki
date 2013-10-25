@@ -7,4 +7,8 @@ class Wiki(db.Model):
 	
 	@classmethod
 	def by_name(cls, page_name):
-		return cls.all().filter('name =', page_name).get()
+		return cls.all().filter('name =', page_name).order('-created').get()
+		
+	@classmethod
+	def by_id(cls, user_id):
+		return cls.get_by_id(user_id)

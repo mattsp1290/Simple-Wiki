@@ -17,6 +17,7 @@ app = webapp2.WSGIApplication([
 	(r'/login', 'handlers.login.LoginHandler'),
 	(r'/logout', 'handlers.logout.LogoutHandler'),
 	('/_edit' + PAGE_RE, 'handlers.edit.EditHandler'),
+	('/_history' + PAGE_RE, 'handlers.history.HistoryHandler'),
 	(PAGE_RE, 'handlers.wiki.WikiHandler'),
 	("(/.*),", 'handlers.wiki.WikiHandler')
 	
